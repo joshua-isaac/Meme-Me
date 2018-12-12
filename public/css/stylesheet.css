@@ -1,0 +1,15 @@
+
+/* ==== Global Styles ==== */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* ==== ID Styles ==== */
+
+/* ==== Class Styles ==== */
+
+.hidden{
+    display: none;
+}
+
