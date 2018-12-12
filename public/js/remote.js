@@ -84,10 +84,31 @@ $(document).ready(function(){
                     for(i = 0; i < data.captions.length; i++){
                         var answerOne = data.captions[0];
                         var answerTwo = data.captions[1];
-
-                        $('.answerOne').text(answerOne);
-                        $('.answerTwo').text(answerTwo);
                     }
+
+                    $('.answerOne').text(answerOne);
+                    $('.answerTwo').text(answerTwo);
+
+                    function handleAnswerOne(){
+                        value = $('.answerOne').text();
+                        console.log(value);
+                        
+                        socket.emit('answerOne', {
+                            answerOne: value
+                        });
+                    }
+
+                    function handleAnswerTwo(){
+                        value = $('.answerTwo').text();
+                        console.log(value);
+
+                        socket.emit('answerTwo', {
+                            answerTwo: value
+                        });
+                    }
+
+                    $('.answerOne').click(handleAnswerOne);
+                    $('.answerTwo').click(handleAnswerTwo);
                 });
 
                 // Else show game UI
@@ -124,6 +145,32 @@ $(document).ready(function(){
 
                         });
 
+                        $('.shuffle').click(shuffle);
+
+                        function shuffle(){
+                            var i;
+                            for (i = 0; i < 3; i++){
+                                // Select random caption from the amount of captions stored in database
+                                var captions = [100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114];
+                                var randCapShuffle = captions[Math.floor(Math.random()*captions.length)];
+                                console.log(randCapShuffle);
+
+                                var randCapShuffleString = randCapShuffle.toString();
+                                // Reference cards in database
+                                var docCapRef = db.collection('cards').doc(randCapShuffleString);
+                                docCapRef.get().then(function(doc){
+
+                                var shuffleCaptionCard = doc.data().card;
+
+                                console.log(shuffleCaptionCard);
+
+                                $('.caption').text(shuffleCaptionCard);
+                        });
+
+                        } 
+    
+                        }
+
                         function handleCaption(){
                             value = $('.caption').text();
                             console.log(value);
@@ -135,6 +182,18 @@ $(document).ready(function(){
                         }
 
                         $('.caption').click(handleCaption);
+
+                        socket.on('answerOneWins', function(data){
+                            console.log(data.answerOneWins);
+
+                            $('.winner').text(data.answerOneWins + ' was the best caption!');
+                        });
+
+                        socket.on('answerTwoWins', function(data){
+                            console.log(data.answerTwoWins);
+
+                            $('.winner').text(data.answerTwoWins + ' was the best caption!');
+                        });
 
 
                 }

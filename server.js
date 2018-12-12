@@ -112,6 +112,26 @@ io.on('connection', function(socket){
 
         });
 
+        socket.on('answerOne', function(data){
+            console.log(data.answerOne);
+
+            var answerOneWins = data.answerOne;
+
+            io.emit('answerOneWins', {
+                answerOneWins: answerOneWins
+            });
+        });
+
+        socket.on('answerTwo', function(data){
+            console.log(data.answerTwo);
+
+            var answerTwoWins = data.answerTwo
+
+            io.emit('answerTwoWins', {
+                answerTwoWins: answerTwoWins
+            });
+        });
+
     });
 
 
