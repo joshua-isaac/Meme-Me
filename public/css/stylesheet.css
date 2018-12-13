@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 /* ==== Global Styles ==== */
 *{
@@ -5,11 +6,208 @@
     padding: 0;
 }
 
-/* ==== ID Styles ==== */
-
-/* ==== Class Styles ==== */
-
-.hidden{
-    display: none;
+body{
+    font-family: Raleway, sans-serif;
 }
 
+input:focus{
+    outline: none;
+}
+
+button:focus{
+    outline: none;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.display-name{
+    font-weight: 700;
+}
+
+
+
+/* ==== ENTRY DIV STYLING ==== */
+
+#entry{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#entry-logo{
+    width: 200px;
+}
+
+#entry-title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+#entry-hero{
+    text-align: center;
+    margin-bottom: 150px;
+}
+
+#entry > .display-name-area{
+    align-self: center;
+    margin-top: 40px;
+}
+
+input{
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#entry > .button-area{
+    align-self: center;
+    margin-top: 20px;
+}
+
+.button-area > button{
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.how-to-play > p{
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+}
+
+
+/* ==== GAME DIV STYLING ==== */
+
+#game{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#game-title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#game-welcome{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#game-instruction{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+#randImg{
+    width: 300px;
+}
+
+.caption{
+    width: 350px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    background: #000;
+    color: #fff;
+    font-family: Helvetica;
+}
+
+.shuffle{
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+.shuffle-counter{
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+#gameTitle{
+    margin-bottom: 60px;
+}
+
+#memeImg{
+    width: 300px;
+    margin-top: 40px;
+}
+
+.winner{
+    text-align: center;
+    font-weight: 700;
+    padding: 10px;
+}
+
+/* ==== MASTER DIV STYLES ==== */
+
+#master{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#master-title{
+    text-align: center;
+}
+
+.welcome-master{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.master-button-area{
+    align-self: center;
+}
+
+.master-button-area > button{
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.answer{
+    width: 350px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    background: #000;
+    color: #fff;
+    font-family: Helvetica;
+}
+
+.answer:nth-of-type(1){
+    margin-bottom: 20px;
+}

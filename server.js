@@ -106,36 +106,52 @@ io.on('connection', function(socket){
             captions.push(caption);
             console.log(captions);
 
+            // Emit captions
             io.emit('captions', {
                 captions: captions
             });
 
         });
 
+        // Recieve answer one from client
         socket.on('answerOne', function(data){
             console.log(data.answerOne);
 
             var answerOneWins = data.answerOne;
 
+            // Send answer one to meme master
             io.emit('answerOneWins', {
                 answerOneWins: answerOneWins
-            });
+            }); 
         });
 
+        // Recieve answer two from client
         socket.on('answerTwo', function(data){
             console.log(data.answerTwo);
 
-            var answerTwoWins = data.answerTwo
+            var answerTwoWins = data.answerTwo;
 
+            // Send answer to to meme master
             io.emit('answerTwoWins', {
                 answerTwoWins: answerTwoWins
             });
         });
 
-    });
-
-
+        // Disconnection
+        socket.on('disconnect', function(){
+            console.log('disconnection');
     
-      
+            // Remove socket.id upon player disconnection
+            var index = players.indexOf(socket.id);
+            if (index > -1){
+                players.splice(index, 1);
+            }
+            
+            // Log remaining players
+            console.log(players);
+            
+        });
+
+    });
 
 });
