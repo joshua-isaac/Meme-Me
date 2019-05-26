@@ -4,7 +4,7 @@ var socket = require('socket.io');
 var app = express();
 
 // App setup
-var server = app.listen(8000, function(){
+var server = app.listen(8000, function () {
     console.log('listening to requests on port 8000');
 });
 
@@ -28,15 +28,15 @@ game = {
         "playerId": [],
         "displayName": [],
     },
-    "currentMaster" : null,
-    "round": 0 
+    "currentMaster": null,
+    "round": 0
 }
 
 // Socket Connection
-io.on('connection', function(socket){
+io.on('connection', function (socket) {
 
     // On Player Connection
-    socket.on('player connected', function(data){
+    socket.on('player connected', function (data) {
 
         // Log Player Connection
         console.log('player connected');
@@ -55,13 +55,13 @@ io.on('connection', function(socket){
         players.push(player);
 
         // If There Are 3 Players, Randomly Select Meme Master
-        if (players.length == 3){
+        if (players.length == 3) {
 
             // Log Max Players
             console.log('Max Player');
 
             // Meme Master Will Randomly Be Selected
-            master = players[Math.floor(Math.random()*players.length)];
+            master = players[Math.floor(Math.random() * players.length)];
 
             // Put Master Into Game Object
             game.currentMaster = master;
@@ -77,7 +77,7 @@ io.on('connection', function(socket){
         }
 
         // Recieve Display Name
-        socket.on('displayName', function(data){
+        socket.on('displayName', function (data) {
 
             displayName = data.displayName;
 
@@ -88,7 +88,7 @@ io.on('connection', function(socket){
         });
 
         // Recieve Meme Image Link
-        socket.on('memeImage', function(data){
+        socket.on('memeImage', function (data) {
             console.log(data.memeImage);
             var memeImage = data.memeImage;
 
@@ -98,9 +98,9 @@ io.on('connection', function(socket){
             });
         });
 
-        
+
         // Recieve Captions From Clients
-        socket.on('caption', function(data){
+        socket.on('caption', function (data) {
 
             var caption = data.caption;
             captions.push(caption);
@@ -114,7 +114,7 @@ io.on('connection', function(socket){
         });
 
         // Recieve answer one from client
-        socket.on('answerOne', function(data){
+        socket.on('answerOne', function (data) {
             console.log(data.answerOne);
 
             var answerOneWins = data.answerOne;
@@ -124,11 +124,11 @@ io.on('connection', function(socket){
             io.emit('answerOneWins', {
                 answerOneWins: answerOneWins,
                 answerTwoLose: answerTwoLose
-            }); 
+            });
         });
 
         // Recieve answer two from client
-        socket.on('answerTwo', function(data){
+        socket.on('answerTwo', function (data) {
             console.log(data.answerTwo);
 
             var answerTwoWins = data.answerTwo;
@@ -141,24 +141,25 @@ io.on('connection', function(socket){
             });
         });
 
-        socket.on('clear', function(data){
+        socket.on('clear', function (data) {
             captions = data.clear;
             console.log(captions);
         });
 
+        console.log('test');
         // Disconnection
-        socket.on('disconnect', function(){
+        socket.on('disconnect', function () {
             console.log('disconnection');
-    
+
             // Remove socket.id upon player disconnection
             var index = players.indexOf(socket.id);
-            if (index > -1){
+            if (index > -1) {
                 players.splice(index, 1);
             }
-            
+
             // Log remaining players
             console.log(players);
-            
+
         });
 
 
