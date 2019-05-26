@@ -13,6 +13,8 @@
 
 <body id="remote">
 
+    <!--- ENTRY DIV START -->
+
     <div id="entry">
 
         <h1 id="entry-title">Meme Me</h1>
@@ -34,15 +36,18 @@
 
     </div>
 
+    <!-- ENTRY DIV END -->
+
     <!--- GAME DIV START -->
 
     <div id="game">
 
         <h1 id="game-title">Meme Me</h1>
 
-        <p id="game-welcome">Hello, <span class="display-name"></span>! Please wait as the Meme Master selects the image.</p>
-        <p id="game-instruction">Pick the funniest card to pair with the image, you can shuffle your card 3 times. Choose wisely...</p>
-        
+        <p id="game-welcome">Hello, <span class="display-name"></span>! Sit tight as the Meme Master selects an image.</p>
+        <p id="game-instruction">Pick the funniest card to pair with the image, you can shuffle your card 3 times per round. Choose wisely...</p>
+        <p id="next-round">The Meme Master is selecting the next image.</p>
+
         <img id="memeImg" style="margin: 0px auto;display:block" src="" alt="">
 
         <br><br>
@@ -56,8 +61,9 @@
         <p class="shuffle-counter">( <span class="shuffles-count">3</span> ) shuffles left</p>
 
         <p class="winner"></p>
-<!-- 
-        <button id="next-player">Next</button> -->
+        <p class="loser"></p>
+
+        <button id="next-player">Next</button>
         
 
     </div>
@@ -71,7 +77,8 @@
 
         <h1 id="master-title">Meme Me</h1>
 
-            <p class="welcome-master">hello, <span class="display-name"></span>! You've been selected to be the meme master.</p>
+            <p id="welcome-master">hello, <span class="display-name"></span>! You've been selected to be the meme master.</p>
+            <p id="master-rounds">Select another meme.</p>
 
             <img id="randImg" src="" alt="" style="margin: 0px auto;display:block">
 
@@ -80,7 +87,7 @@
             <div class="master-button-area">
                 <button id="randomize">Randomize</button>
                 <button id="send">Send Meme</button>
-                <!-- <button id="next">Next</button> -->
+                <button id="next">Next</button>
             </div>
 
             <p class="master-win"></p>

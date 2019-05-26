@@ -54,7 +54,7 @@ io.on('connection', function(socket){
         // Push Player Into Players Array
         players.push(player);
 
-        // If There Are 4 Players, Randomly Select Meme Master
+        // If There Are 3 Players, Randomly Select Meme Master
         if (players.length == 3){
 
             // Log Max Players
@@ -118,10 +118,12 @@ io.on('connection', function(socket){
             console.log(data.answerOne);
 
             var answerOneWins = data.answerOne;
+            var answerTwoLose = data.answerTwo;
 
             // Send answer one to meme master
             io.emit('answerOneWins', {
-                answerOneWins: answerOneWins
+                answerOneWins: answerOneWins,
+                answerTwoLose: answerTwoLose
             }); 
         });
 
@@ -130,11 +132,18 @@ io.on('connection', function(socket){
             console.log(data.answerTwo);
 
             var answerTwoWins = data.answerTwo;
+            var answerOneLose = data.answerOne;
 
             // Send answer to to meme master
             io.emit('answerTwoWins', {
-                answerTwoWins: answerTwoWins
+                answerTwoWins: answerTwoWins,
+                answerOneLose: answerOneLose
             });
+        });
+
+        socket.on('clear', function(data){
+            captions = data.clear;
+            console.log(captions);
         });
 
         // Disconnection
@@ -151,6 +160,7 @@ io.on('connection', function(socket){
             console.log(players);
             
         });
+
 
     });
 

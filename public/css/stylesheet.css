@@ -104,14 +104,14 @@ input{
 
 #game-welcome{
     margin-top: 10px;
-    margin-bottom: 10px;
     text-align: center;
+    padding: 12px;
 }
 
 #game-instruction{
     text-align: center;
     padding: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #randImg{
@@ -155,12 +155,50 @@ input{
 #memeImg{
     width: 300px;
     margin-top: 40px;
+    border-radius: 4px;
 }
 
 .winner{
     text-align: center;
     font-weight: 700;
     padding: 10px;
+    background-color: #badc58;
+    color: black;
+    border: 2px solid black;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+#game > p:last-of-type{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.loser{
+    text-align: center;
+    font-weight: 700;
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: #e74c3c;
+    color: black;
+    border: 2px solid black;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+#next-player{
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+#next-round{
+    text-align: center;
 }
 
 /* ==== MASTER DIV STYLES ==== */
@@ -175,10 +213,11 @@ input{
     text-align: center;
 }
 
-.welcome-master{
+#welcome-master{
     text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 .master-button-area{
@@ -210,4 +249,8 @@ input{
 
 .answer:nth-of-type(1){
     margin-bottom: 20px;
+}
+
+#master-rounds{
+    text-align: center;
 }
